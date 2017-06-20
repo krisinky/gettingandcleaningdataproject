@@ -1,6 +1,4 @@
 
-run_analysis<-function (){
-
 ####library required packages        
         library(reshape2)
         library(plyr)
@@ -10,10 +8,10 @@ run_analysis<-function (){
         
         
 ####load features.txt        accelerator variable labels
-        features<-read.csv("./features.txt",header=FALSE,sep="")
+        features<-read.csv("./UCI HAR Dataset/features.txt",header=FALSE,sep="")
 
 ####load activity_labels.txt
-        actlabel<-read.csv("./activity_labels.txt",header=FALSE,sep=" ")
+        actlabel<-read.csv("./UCI HAR Dataset/activity_labels.txt",header=FALSE,sep=" ")
         colnames(actlabel)<-c("V1","activity")
 
 ##########LOAD TRAINING DATA #################################
@@ -22,14 +20,14 @@ run_analysis<-function (){
         ####accelerator variable values 
         cn<-features$V2  ##column names
         ww<-rep(16,561)  ##column widths
-        data<-read.fwf("./train/x_train.txt",widths=ww,col.names=cn)
+        data<-read.fwf("./UCI HAR Dataset/train/x_train.txt",widths=ww,col.names=cn)
 
 ####load /train/subject_train.txt  IDs of volunteers in training set
-        trnsubdata<-read.csv("./train/subject_train.txt",header=FALSE)
+        trnsubdata<-read.csv("./UCI HAR Dataset/train/subject_train.txt",header=FALSE)
         colnames(trnsubdata)<-"subject"
 
 ####load /train/y_train.txt  keys for x_train records IDing associated activity
-        trnydata<-read.csv("./train/y_train.txt",header=FALSE)
+        trnydata<-read.csv("./UCI HAR Dataset/train/y_train.txt",header=FALSE)
         colnames(trnydata)<-"activityno"
 
 ####add activity IDs and Subject IDs to x_train data
@@ -42,14 +40,14 @@ run_analysis<-function (){
 #########LOAD TEST DATA#######################################
         
 ####load /test/x_test.txt as fixed format file         
-        datatest<-read.fwf("./test/x_test.txt",widths=ww,col.names=cn)
+        datatest<-read.fwf("./UCI HAR Dataset/test/x_test.txt",widths=ww,col.names=cn)
 
 ####load /test/subject_test.txt  IDs of volunteers in test set
-        tstsubdata<-read.csv("./test/subject_test.txt",header=FALSE)
+        tstsubdata<-read.csv("./UCI HAR Dataset/test/subject_test.txt",header=FALSE)
         colnames(tstsubdata)<-"subject"
 
 ####load /test/y_test.txt  keys for x_test records IDing associated activity
-        tstydata<-read.csv("./test/y_test.txt",header=FALSE)
+        tstydata<-read.csv("./UCI HAR Dataset/test/y_test.txt",header=FALSE)
         colnames(tstydata)<-"activityno"
 
 ####add activity IDs and Subject IDs to x_test data
@@ -89,4 +87,3 @@ run_analysis<-function (){
         write.table(data12,file="tidy_data.txt",row.names=FALSE)
 
 
-}
