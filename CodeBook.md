@@ -1,4 +1,4 @@
----
+ad---
 title: "CodeBook.md"
 author: "Kristina	 Speelman"
 date: "6/18/2017"
@@ -8,7 +8,7 @@ date: "6/18/2017"
 
 ###Getting and Cleaning Data Course Project
 
-* Load a data set from multiple files.
+* Read multiple data files.
 * Combine files into one data set
 * Use the descriptive activity names to name the activities in the dataset.
 * Clean up variable names to make them more readable
