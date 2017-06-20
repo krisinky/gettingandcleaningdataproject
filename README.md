@@ -39,31 +39,25 @@ The script, run_analysis.R, contains a function run_analysis()that
 5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
-The run_analysis()function contains library statements for the following required packages:  reshape2, plyr, and dplyr.  
+The run_analysis.R script contains library statements for the following required packages:  reshape2, plyr, and dplyr.  
 
 
-1.	 The function downloads and reads the data sets by 
+1.	 The script reads the data sets by 
 
-a.	Determining the download method (curl or wininet) required by the operating system.
+a.	Reading the features.txt, activity_labels.txt, subject_train.txt, subject_test.txt, y_train.txt, and y_test.txt files using read.csv().
 
-b.	Downloading the ZIP file from the url provided.
+b.	Reading the x_train.txt and x_test.txt files using read.fwf(), with column widths=16 and column names from features.txt.
 
-c.	Extracting the files from the ZIP file using unzip().
+c.	Assign column names to subject_train.txt, subject_test.txt, y_train.txt, and y_test.txt files.
 
-d.	Reading the features.txt, activity_labels.txt, subject_train.txt, subject_test.txt, y_train.txt, and y_test.txt files using read.csv().
+d.	For x_train and x_test separately, use cbind() to combine the subject and y_ data with the x_ data.  Use merge() to append the activity_labels (this is actually step 3, but I did it here).
 
-e.	Reading the x_train.txt and x_test.txt files using read.fwf(), with column widths=16 and column names from features.txt.
-
-f.	Assign column names to subject_train.txt, subject_test.txt, y_train.txt, and y_test.txt files.
-
-g.	For x_train and x_test separately, use cbind() to combine the subject and y_ data with the x_ data.  Use merge() to append the activity_labels (this is actually step 3, but I did it here).
-
-h.	Finally, use rbind() to combine the test and train data sets.
+e.	Finally, use rbind() to combine the test and train data sets.
 
 
 2.	Uses select() to select the subject, activity, and variables that contain "mean", contain("std"), do not contain “angle", and do not contain "meanFreq”.
 
-3.	See 1.g
+3.	See 1.d
 
 4.	Uses a series of gsub() and sub() statements to 
 
@@ -81,7 +75,7 @@ f.	replaces double label “bodybody” with “body”
 
 g.	replaces "bodygyro" with "angularvelocity"
 
-5.	Uses melt(), then ddply() to calculate means for all variables fir each subject and activity combination.  Uses dcast() to create a data set with one row for each subject-activity combination.  Uses write.cvs to create the tidy_data.txt file.
+5.	Uses melt(), then ddply() to calculate means for all variables fir each subject and activity combination.  Uses dcast() to create a data set with one row for each subject-activity combination.  Uses write.table to create the tidy_data.txt file.
 
 
 
