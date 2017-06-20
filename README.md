@@ -22,13 +22,17 @@ The [krisinky/gettingandcleaningdataproject](https://github.com/krisinky/getting
 This README.md document explains the project and how to use files contained in the repository.
 The CodeBook.md describes the variables, the data, and any transformations or work that you performed to clean up the data.
 The tidy_data.txt data set is documented in the CodeBook.md.
-##Description of the script, run_analysis.R
+
+
+Description of the script, run_analysis.R
+
 The script, run_analysis.R, contains a function run_analysis()that
 1.	Merges the training and the test sets to create one data set.
 2.	Extracts only the measurements on the mean and standard deviation for each measurement. 
 3.	Uses descriptive activity names to name the activities in the data set
 4.	Appropriately labels the data set with descriptive variable names. 
 5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
 The run_analysis()function contains library statements for the following required packages:  reshape2, plyr, and dplyr.  
 
 1.	 The function downloads and reads the data sets by 
